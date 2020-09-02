@@ -17,4 +17,24 @@
 
   <h1 class='pt-3 pb-3'>Dashboard</h1>
   <p>Bienvenue sur votre dashboard perso cher {{ username }}</p>
+
+  {% if username == 'client' %}
+    <p>Voici l'interface client :</p>
+    <ul>
+      <li>consulter liste de souhaits</li>
+      <li>consulter favoris</li>
+      <li>créer une alerte personnalisée</li>
+    </ul>
+  {% elif username == "vendeur" %}
+    <p>Voici l'interface vendeur/gestionnaire</p>
+    <ul>
+      <li>nombre de visites sur le site</li>
+      <li>taux de conversion (création de compte / visite)</li>
+      <li>taux de conversion avancé (création de liste de souhait / création de compte)</li>
+      <li>nombre moyen de véhicules / liste de souhaits / personne</li>
+      <li>le top 5 des véhicules les plus appréciés(liste de souhait) et consultés sous forme de carrousel</li>
+      <li>graphe ordonné des types de voitures vendus</li>
+      <li>nombre de ventes / mois / type de véhicules</li>
+    </ul>
+  {% endif %}
 </body>

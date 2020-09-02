@@ -24,11 +24,11 @@
       {% endif %}
       {% if username != "vendeur" and username != "client"%}
       <li class="nav-item">
-        <a class="nav-link disabled" href="{{ url_for('dashboard')}}">Mon espace</a>
+        <a class="nav-link disabled" href="{{ url_for('dashboard', username = username)}}">Mon espace</a>
       </li>
       {% endif %}
     </ul>
-    {% if username != "vendeur" or username != "client"%}
+    {% if username != "vendeur" and username != "client"%}
       <a href="{{ url_for('userlogin')}}"><button class="btn btn-outline-success my-2 my-sm-0">Connexion</button></a>
     {% else %}
       <img src="{{ url_for('static', filename='images/account.png') }}" style='height: 20px'>
