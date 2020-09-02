@@ -7,15 +7,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="">Les véhicules<span class="sr-only"></span></a>
+        <a class="nav-link" href="{{ url_for('vehicules')}}">Nos véhicules<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Visite virtuelle</a>
+        <a class="nav-link" href="{{ url_for('visiteVirtuelle')}}">Visite virtuelle</a>
       </li>
+      {% if username == "client" %}
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Mon espace</a>
+        <a class="nav-link" href="{{ url_for('dashboard')}}">Mon espace</a>
       </li>
+      {% endif %}
+      {% if username =='vendeur' %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('dashboard')}}">Dashboard</a>
+      </li>
+      {% endif %}
+      {% if username != "vendeur" and username != "client"%}
+      <li class="nav-item">
+        <a class="nav-link disabled" href="{{ url_for('dashboard')}}">Mon espace</a>
+      </li>
+      {% endif %}
     </ul>
+    {% if username != "vendeur" or username != "client"%}
       <a href="{{ url_for('userlogin')}}"><button class="btn btn-outline-success my-2 my-sm-0">Connexion</button></a>
+    {% else %}
+      <img src="{{ url_for('static', filename='images/account.png') }}" style='height: 20px'>
+    {% endif %}
   </div>
 </nav>
